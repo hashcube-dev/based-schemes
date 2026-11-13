@@ -5,9 +5,9 @@
 [Base24](https://github.com/tinted-theming/base24) schemes in your documents.
 
 ```typ
-#import "@preview/based-schemes:0.1.0": scheme
+#import "@preview/based-schemes:0.1.1": scheme
 
-#let palette = scheme("scheme.yaml")
+#let palette = scheme(yaml("scheme.yaml"))
 #page(
   fill: palette.base00.rgb.full,
   [
