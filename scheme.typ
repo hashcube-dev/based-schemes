@@ -1,4 +1,4 @@
-#let scheme(file) = {
+#let scheme(palette) = {
   // used to make base16 work with base24
   let base16_fallback_lut = (
     base10: "base00",
@@ -43,7 +43,6 @@
   )
 
   import "helpers.typ": format_byte, copy_or_else, to_struct
-  let palette = yaml(file)
   let final = (:)
 
   // i wish typst could throw errors
@@ -64,7 +63,7 @@
       let key = "base" + format_byte(i)
       // is invalid if not in the file
       assert(key in palette.keys(), message:
-        "`" + key + "` not found in `"+ file + "`")
+        "`" + key + "` not found in palette")
       final.insert(key, to_struct(palette.at(key).replace("#", "")))
     }
 
@@ -87,7 +86,7 @@
       let key = "base" + format_byte(i)
       // is invalid if not in the file
       assert(key in palette.palette.keys(), message:
-        "`" + key + "` not found in `"+ file + "`")
+        "`" + key + "` not found in palette")
       final.insert(key, to_struct(palette.palette.at(key).replace("#", "")))
     }
 
